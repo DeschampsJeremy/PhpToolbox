@@ -20,4 +20,19 @@ class StringService
         );
         return strtr($value, $unwanted_array);
     }
+
+    /**
+     * Truncate last line
+     * @return string
+     */
+    public static function truncateLastLine(string $value, int $limit = 5000): string
+    {
+        if (strlen($value) > $limit) {
+            $num = $limit - strlen($value);
+            $value = substr($value, 0, $num);
+            $num2 = strripos($value, '<br>') - strlen($value);
+            $value = substr($value, 0, $num2);
+        }
+        return $value;
+    }
 }
