@@ -3,6 +3,7 @@
 namespace DeschampsJeremy;
 
 use DateTime;
+use Exception;
 
 class SecurityService
 {
@@ -60,5 +61,24 @@ class SecurityService
             return json_decode($payload, true);
         }
         return null;
+    }
+    
+    /**
+     * Get a JWT payload or null if empty
+     * @return array|null
+     */
+    public static function payloadJwt(string $jwt): ?array
+    {
+        $parts = explode(".", $jwt);
+        if (empty($parts[0]) || empty($parts[1])) {
+            return null;
+        }
+        try {
+            $stdClass = json_decode(base64_decode($parts[1]));
+            $array = json_decode(json_encode($stdClass), true);
+            return $array;
+        } catch (Exception $e) {
+            return null;
+        }
     }
 }

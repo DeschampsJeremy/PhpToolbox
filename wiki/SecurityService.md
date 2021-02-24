@@ -64,3 +64,20 @@ array(2) {
   [1]=> NULL
 }
 ```
+
+### static payloadJwt(string $jwt): ?array
+Get a JWT payload or null if empty
+```
+var_dump([
+    0 => SecurityService::payloadJwt("eyJhbGciOiJzaGEyNTYiLCJ0eXAiOiJKV1QifQ==.eyJpZCI6NDIsInN1YiI6MTYwMjc0ODc3NH0=.d092e4f5b1b61815b91868d20dbd05e699dca737de58eaeaa2bf298b97e92266_MODIFY_TOKEN"),
+    1 => SecurityService::payloadJwt("eyJhbGciOiJzaGEyNTYiLCJ0eXAiOiJKV1QifQ"),
+]);
+
+array(2) {
+  [0]=> array(2) {
+    ["id"]=> int(42)
+    ["sub"]=> int(1602748774)
+  }
+  [1]=> NULL
+}
+```
