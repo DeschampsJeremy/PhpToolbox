@@ -50,6 +50,9 @@ class SecurityService
     public static function userByJwt(string $jwt, string $secretKey): ?array
     {
         $parts = explode(".", $jwt);
+        if (empty($parts[0]) || empty($parts[1]) || empty($parts[2])) {
+            return null;
+        }
         $header = base64_decode($parts[0]);
         $payload = base64_decode($parts[1]);
         $signatureTest = hash_hmac('sha256', $header . $payload, $secretKey);
