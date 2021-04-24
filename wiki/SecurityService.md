@@ -58,8 +58,8 @@ var_dump([
 
 array(2) {
   [0]=> array(2) {
-    ["id"]=> int(42)
-    ["sub"]=> int(1602748774)
+    ["sub"]=> int(42)
+    ["iat"]=> int(1602748774)
   }
   [1]=> NULL
 }
@@ -75,8 +75,8 @@ var_dump([
 
 array(2) {
   [0]=> array(2) {
-    ["id"]=> int(42)
-    ["sub"]=> int(1602748774)
+    ["sub"]=> int(42)
+    ["iat"]=> int(1602748774)
   }
   [1]=> NULL
 }

@@ -36,8 +36,8 @@ class SecurityService
      */
     public static function jwtByUser(int $userId, string $secretKey, array $payloads = []): string
     {
-        $payloads['id'] = $userId;
-        $payloads['sub'] = (new DateTime())->getTimestamp();
+        $payloads['sub'] = $userId;
+        $payloads['iat'] = (new DateTime())->getTimestamp();
         $header = json_encode(['alg' => 'sha256', 'typ' => 'JWT']);
         $payload = json_encode($payloads);
         $signature = hash_hmac('sha256', $header . $payload, $secretKey);
